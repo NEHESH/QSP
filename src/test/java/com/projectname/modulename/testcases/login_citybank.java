@@ -38,7 +38,7 @@ public class login_citybank extends TESTBASE1 {
 		  String First=itr.next();
 		  String second = itr.next();
 		  driver.switchTo().window(second);
-		  driver.findElement(By.xpath(or2.getProperty("close"))).click();
+		  driver.findElement(By.xpath(or2.getProperty("closebtn"))).click();
 		 
 		  
          driver.findElement(By.xpath(or2.getProperty("Xemailshow"))).sendKeys(Testdata.get("Email_id"));

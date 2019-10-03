@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[first name should be entered NEHESH]]>
+    </line>
+    <line>
+      <![CDATA[Last name should be entered SAKPAL]]>
+    </line>
+    <line>
+      <![CDATA[Job Tittle should be displayed tester]]>
+    </line>
+    <line>
+      <![CDATA[Email id should be entered pune]]>
+    </line>
+    <line>
+      <![CDATA[Phone no should be entered 9.004258543E9]]>
+    </line>
+    <line>
+      <![CDATA[Company name should be entered " + testData.get("Email_ID]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2019-09-28T17:33:21Z" name="Suite" finished-at="2019-09-28T17:33:44Z" duration-ms="23006">
+    <groups>
+    </groups>
+    <test started-at="2019-09-28T17:33:21Z" name="Testsalesforce" finished-at="2019-09-28T17:33:44Z" duration-ms="23006">
+      <class name="com.salesforce_Test_case.salesforce_Testcase">
+        <test-method is-config="true" signature="testsite()[pri:0, instance:com.salesforce_Test_case.salesforce_Testcase@740d2e78]" started-at="2019-09-28T17:33:21Z" name="testsite" finished-at="2019-09-28T17:33:32Z" duration-ms="10921" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testsite -->
+        <test-method signature="Reading_xlsx_files(java.util.Hashtable)[pri:0, instance:com.salesforce_Test_case.salesforce_Testcase@740d2e78]" started-at="2019-09-28T17:33:32Z" name="Reading_xlsx_files" data-provider="Data_Collections" finished-at="2019-09-28T17:33:42Z" duration-ms="9910" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Language=Hindi, Phone_Numer=9.004258543E9, Company=QSP, Iteration=1.0, Last_Name=SAKPAL, Address=pune, Email_ID=neheshsakpal007@gmail.com, Password=Nehesh#12, First_Name=NEHESH, Employees=150.0, Job_Tittle=tester}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[first name should be entered NEHESH]]>
+            </line>
+            <line>
+              <![CDATA[Last name should be entered SAKPAL]]>
+            </line>
+            <line>
+              <![CDATA[Job Tittle should be displayed tester]]>
+            </line>
+            <line>
+              <![CDATA[Email id should be entered pune]]>
+            </line>
+            <line>
+              <![CDATA[Phone no should be entered 9.004258543E9]]>
+            </line>
+            <line>
+              <![CDATA[Company name should be entered " + testData.get("Email_ID]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- Reading_xlsx_files -->
+        <test-method is-config="true" signature="close()[pri:0, instance:com.salesforce_Test_case.salesforce_Testcase@740d2e78]" started-at="2019-09-28T17:33:42Z" name="close" finished-at="2019-09-28T17:33:44Z" duration-ms="2111" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- com.salesforce_Test_case.salesforce_Testcase -->
+      <class name="com.salesforce_Test_base.salesforce_login_testbase">
+        <test-method is-config="true" signature="writeToExtentReport()[pri:0, instance:com.salesforce_Test_base.salesforce_login_testbase@676cf48]" started-at="2019-09-28T17:33:44Z" name="writeToExtentReport" finished-at="2019-09-28T17:33:44Z" duration-ms="272" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- writeToExtentReport -->
+      </class> <!-- com.salesforce_Test_base.salesforce_login_testbase -->
+    </test> <!-- Testsalesforce -->
+  </suite> <!-- Suite -->
+</testng-results>

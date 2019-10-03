@@ -1,8 +1,5 @@
 package com.projectname.modulename.build;
 
-
-
-
 import java.io.File;
 import java.io.FileInputStream;
 

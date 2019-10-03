@@ -34,12 +34,10 @@ public class salesforce_Testcase extends salesforce_login_testbase {
 		driver.findElement(By.xpath(or.getProperty("xEmail"))).sendKeys(testData.get("Address"));
 		screenShots();
 		Reporter.log("Email id should be entered " + testData.get("Address"));
-//		System.out.println("Email id should be entered " + testData.get("Address"));
-		
+
 		driver.findElement(By.xpath(or.getProperty("xphone"))).sendKeys(testData.get("Phone_Numer"));
 		screenShots();
 		Reporter.log("Phone no should be entered " + testData.get("Phone_Numer"));
-//		System.out.println("Phone no should be entered " + testData.get("Phone_Numer"));
 		
 		driver.findElement(By.xpath(or.getProperty("xcompany"))).sendKeys(testData.get("Email_ID"));
 		screenShots();
@@ -51,7 +49,6 @@ public class salesforce_Testcase extends salesforce_login_testbase {
 		screenShots();
 		System.out.println("EMPLOYEES SHOULD BE SELECTED");
 
-		// Thread.sleep(3000);
 		Select drplang = new Select(driver.findElement(By.xpath("//select[@id='signup_form_1-CompanyLanguage']")));
 		drplang.selectByValue("en_US");
 		screenShots();

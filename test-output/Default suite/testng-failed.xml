@@ -3,14 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.salesforce_Test_case.salesforce_Testcase">
+      <class name="com.salesforce_Test_case.Test_salesforce_check">
         <methods>
-          <include name="close"/>
-          <include name="Reading_xlsx_files" invocation-numbers="0"/>
-          <include name="writeToExtentReport"/>
-          <include name="testsite"/>
+          <include name="testcase_two"/>
         </methods>
-      </class> <!-- com.salesforce_Test_case.salesforce_Testcase -->
+      </class> <!-- com.salesforce_Test_case.Test_salesforce_check -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

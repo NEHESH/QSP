@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 
 import com.AutomationWorldByRahul.SeleniumTraining.DataCollection;
@@ -28,17 +30,17 @@ import com.relevantcodes.extentreports.LogStatus;
 public class salesforce_login_testbase {
 
 	public static WebDriver driver;
-
 	public static Properties or;
 	public static Properties config;
-	public static ExcelReader e1 = new ExcelReader("C:\\Users\\Nehesh Sakpal\\eclipse-workspace\\com.salesforce_build\\src\\test\\resources\\testData\\Master_Sheet.xlsx");
-	
+	public static ExcelReader e1 = new ExcelReader("C:\\Users\\Nehesh Sakpal\\eclipse-workspace\\com.salesforce_build\\src\\test\\resources\\testData\\NEW_DATA_EXCEL.xlsx");
+	public static String testCaseName, skip = null;
 	public static ExtentReports er;	
 	public static ExtentTest et;
+	public static Hashtable<String, String> testCaseRunMode = new Hashtable<String, String>();
+
+	static String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(Calendar.getInstance().getTime());
 	
-	static String timeStamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(Calendar.getInstance().getTime());
-	
-	@BeforeMethod
+	@BeforeSuite
 	public void testsite() throws IOException {
 		
 		er=new ExtentReports(System.getProperty("user.dir") +"\\src\\test\\resources\\extentReports\\ExtentReport_" + timeStamp + ".html");
@@ -52,12 +54,19 @@ public class salesforce_login_testbase {
 		FileInputStream s2 = new FileInputStream(
 				"C:\\Users\\Nehesh Sakpal\\eclipse-workspace\\com.salesforce_build\\src\\test\\resources\\properties\\or.properties");
 		or.load(s2);
-
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(Calendar.getInstance().getTime());
+		er = new ExtentReports(System.getProperty("user.dir") + "\\src\\test\\resources\\extentReports\\ExtentReport___"
+				+ timeStamp + ".html");
+		loadHashTable(testCaseRunMode, "Test_Cases", "TestCaseName", "Run_Mode");
+	}
+		@BeforeMethod
+		public static void launchBrowser() {
+		
 		if (config.getProperty("browser").equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
 					"C:\\Users\\Nehesh Sakpal\\eclipse-workspace\\com.salesforce_build\\src\\test\\resources\\Drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
-
+			et = er.startTest(testCaseName);		
 		}
 		driver.get(config.getProperty("link_url"));
 		System.out.println("salesforce login page should be open ");
@@ -67,6 +76,8 @@ public class salesforce_login_testbase {
 	@AfterMethod
 	public void close() {
 		driver.close();
+		et.log(LogStatus.INFO, "Excution has been completed for Test case:-" + testCaseName);
+	
 	}
 	
 	@AfterSuite
@@ -77,7 +88,7 @@ public class salesforce_login_testbase {
 		}
 	@DataProvider
 	public static Object[][] Data_Collections() {
-		DataCollection d1 = new DataCollection(e1, "New_sheet", "TC001_Create_an_Account3");
+		DataCollection d1 = new DataCollection(e1, "Sheet1", "TC_002 Create an Account build");
 		return d1.dataArray();
 	}
 	
@@ -87,7 +98,7 @@ public class salesforce_login_testbase {
 		
 		String timeStamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(Calendar.getInstance().getTime());
 		
-		String ReportDirectory=new File(System.getProperty("user.dir")).getAbsolutePath() + "\\src\\test\\resources\\ScreenShots__" + timeStamp + ".png";
+		String ReportDirectory=new File(System.getProperty("user.dir")).getAbsolutePath() + "\\src\\test\\resources\\screenShots\\ScreenShot____" + timeStamp + ".png";
 		
 		File destFile=new File(ReportDirectory);
 		
@@ -95,4 +106,36 @@ public class salesforce_login_testbase {
 		
 		et.log(LogStatus.PASS, et.addScreenCapture(ReportDirectory));
 	}
-}
+	
+	public static void loadHashTable(Hashtable<String, String> testCaseRunMode, String SheetName, String KeyCol,
+			String valueCol) {
+
+		int row = e1.getRowCount(SheetName);
+
+		for (int i = 1; i <= row; i++) {
+
+			String key = e1.getCellData(SheetName, KeyCol, i);
+
+			String val = e1.getCellData(SheetName, valueCol, i);
+
+			testCaseRunMode.put(key, val);
+		}
+
+		System.out.println(testCaseRunMode);
+	}
+	
+	public static boolean isExecutable(String TC_name) {
+		testCaseName = TC_name;
+		if (testCaseRunMode.get(testCaseName).equalsIgnoreCase("Y")) {
+			skip = "No";
+			return true;
+		} else {
+			skip = "Yes";
+			return false;
+		}}
+
+	public static void passLogStatus(String message) throws Exception {
+
+		et.log(LogStatus.PASS, message);
+		screenShots();
+	}}

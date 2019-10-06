@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.salesforce_Test_case.Test_salesforce_check">
+      <class name="com.salesforce_Test_case.Testcaseno1">
         <methods>
-          <include name="testcase_two"/>
+          <include name="close"/>
+          <include name="login" invocation-numbers="0"/>
+          <include name="writeToExtentReport"/>
+          <include name="testsite"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- com.salesforce_Test_case.Test_salesforce_check -->
+      </class> <!-- com.salesforce_Test_case.Testcaseno1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

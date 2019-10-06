@@ -11,11 +11,10 @@ import com.salesforce_Test_base.salesforce_login_testbase;
 
 public class salesforce_Testcase extends salesforce_login_testbase {
 	
-	@Test(dataProvider = "Data_Collections")
+//	@Test(dataProvider = "Data_Collections")
 	public void Reading_xlsx_files(Hashtable<String, String> testData) throws Exception {
 
 		et = er.startTest("TC001_Create_an_Account3");
-
 		driver.findElement(By.xpath(or.getProperty("xFist_name"))).sendKeys(testData.get("First_Name"));
 		screenShots();
 		Reporter.log("first name should be entered " + testData.get("First_Name"));
